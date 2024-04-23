@@ -3,10 +3,10 @@ package utils
 import . "github.com/cdelgado23/go-learning-projects/astar/pkg/map"
 
 // Generate generates a map with a given width and height
-func Generate(width int, height int) [][]*Node {
-	nodes := make([][]*Node, width)
+func Generate(height int, width int) [][]*Node {
+	nodes := make([][]*Node, height)
 	for i := range nodes {
-		nodes[i] = make([]*Node, height)
+		nodes[i] = make([]*Node, width)
 		for j := range nodes[i] {
 			nodes[i][j] = &Node{Location: &Point3D{X: float64(i), Y: float64(j)}}
 		}
@@ -17,13 +17,13 @@ func Generate(width int, height int) [][]*Node {
 			if i > 0 {
 				nodes[i][j].Neighbors = append(nodes[i][j].Neighbors, nodes[i-1][j])
 			}
-			if i < width-1 {
+			if i < height-1 {
 				nodes[i][j].Neighbors = append(nodes[i][j].Neighbors, nodes[i+1][j])
 			}
 			if j > 0 {
 				nodes[i][j].Neighbors = append(nodes[i][j].Neighbors, nodes[i][j-1])
 			}
-			if j < height-1 {
+			if j < width-1 {
 				nodes[i][j].Neighbors = append(nodes[i][j].Neighbors, nodes[i][j+1])
 			}
 		}

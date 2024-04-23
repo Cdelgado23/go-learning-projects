@@ -9,9 +9,9 @@ import (
 // Generate a grid of nodes and executes the A* algorithm to find the shortest path between two nodes
 func main() {
 	// find the shortest path between the top-left and bottom-right nodes
-	nodes := Generate(10, 10)
-	start := nodes[8][9]
-	end := nodes[2][2]
+	nodes := Generate(10, 50)
+	start := nodes[2][2]
+	end := nodes[9][40]
 	path, found := AStar(start, end)
 	if !found {
 		fmt.Println("No path found")
