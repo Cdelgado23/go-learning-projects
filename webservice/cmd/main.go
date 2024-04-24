@@ -1,18 +1,12 @@
 package main
 
 import (
-	"github.com/cdelgado23/go-learning-projects/webservice/internal/platform/server"
+	"github.com/cdelgado23/go-learning-projects/webservice/cmd/api/bootstrap"
 	"log"
 )
 
-const (
-	host = "localhost"
-	port = 8080
-)
-
 func main() {
-	srv := server.New(host, port)
-	if err := srv.Run(); err != nil {
+	if err := bootstrap.Run(); err != nil {
 		log.Fatal(err)
 	}
 }
