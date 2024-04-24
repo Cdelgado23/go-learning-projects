@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 )
@@ -11,13 +12,12 @@ const httpPort = ":8080"
 func main() {
 	fmt.Println("Starting web service on port", httpPort)
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/hello", helloHandler)
+	srv := gin.New()
+	srv.GET("/hello", helloHandler)
 
-	log.Fatal(http.ListenAndServe(httpPort, mux))
+	log.Fatal(srv.Run(httpPort))
 }
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("Hello, world!"))
+func helloHandler(ctx *gin.Context) {
+	ctx.String(http.StatusOK, "Hello, World!")
 }
