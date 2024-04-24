@@ -1,4 +1,4 @@
-# 1 - A* implementation
+# 2 - Web server
 
 Web servers are a key part of modern applications, they are responsible for handling requests and responses, and they are the bridge between the user and the application.
 
