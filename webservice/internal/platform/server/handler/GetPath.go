@@ -1,6 +1,7 @@
-package paths
+package handler
 
 import (
+	"github.com/cdelgado23/go-learning-projects/webservice/internal/path"
 	"github.com/gin-gonic/gin"
 )
 
@@ -27,7 +28,7 @@ type PathRequest struct {
 	}
 }
 
-func GetPathsHandler() gin.HandlerFunc {
+func GetPathsHandler(service path.PathFinderService) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var request PathRequest
 
@@ -37,6 +38,13 @@ func GetPathsHandler() gin.HandlerFunc {
 		}
 		start := NewNodeRequest(request.StartNode.SX, request.StartNode.SY, request.StartNode.SZ)
 		end := NewNodeRequest(request.EndNode.EX, request.EndNode.EY, request.EndNode.EZ)
-		ctx.JSON(200, gin.H{"start": start, "end": end})
+
+		foundPath := service.PathFromTo(NodeRequestToLocation(start), NodeRequestToLocation(end))
+
+		ctx.JSON(200, gin.H{"foundPath": foundPath})
 	}
+}
+
+func NodeRequestToLocation(node NodeRequest) path.Location {
+	return path.NewLocation(node.X, node.Y, node.Z)
 }

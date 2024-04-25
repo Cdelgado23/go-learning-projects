@@ -4,6 +4,10 @@ go 1.18
 
 require github.com/gin-gonic/gin v1.9.1
 
+require github.com/cdelgado23/go-learning-projects/astar  v0.0.0-unpublished
+
+replace github.com/cdelgado23/go-learning-projects/astar v0.0.0-unpublished => ../astar
+
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
