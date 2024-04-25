@@ -31,7 +31,7 @@ func PathsHandler() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var request PathRequest
 
-		if err := ctx.ShouldBind(&request); err != nil {
+		if err := ctx.Bind(&request); err != nil {
 			ctx.JSON(400, gin.H{"error": err.Error()})
 			return
 		}
