@@ -1,9 +1,7 @@
-package pathfinding
-
-import "github.com/cdelgado23/go-learning-projects/astar/pkg/map"
+package astar
 
 type vertex struct {
-	node   *_map.Node
+	node   *Node
 	cost   float64
 	f      float64
 	g      float64
@@ -11,7 +9,7 @@ type vertex struct {
 }
 
 // AStar finds the shortest path between start and end using the A* algorithm
-func AStar(start, end *_map.Node) (path []*_map.Node, found bool) {
+func AStar(start, end *Node) (path []*Node, found bool) {
 	// open closed lists
 	openList := make([]*vertex, 0)
 	closedList := make([]*vertex, 0)
@@ -35,9 +33,9 @@ func AStar(start, end *_map.Node) (path []*_map.Node, found bool) {
 
 		// if the current node is the end node, we have found the path
 		if current.node == end {
-			path = make([]*_map.Node, 0)
+			path = make([]*Node, 0)
 			for current != nil {
-				path = append([]*_map.Node{current.node}, path...)
+				path = append([]*Node{current.node}, path...)
 				current = current.parent
 			}
 			return path, true
@@ -70,7 +68,7 @@ func AStar(start, end *_map.Node) (path []*_map.Node, found bool) {
 }
 
 // check if a vertex is in the list
-func findVertex(list []*vertex, node *_map.Node) (v *vertex, ok bool) {
+func findVertex(list []*vertex, node *Node) (v *vertex, ok bool) {
 	for _, v := range list {
 		if v.node == node {
 			return v, true

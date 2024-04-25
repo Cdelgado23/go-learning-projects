@@ -1,8 +1,4 @@
-package utils
-
-import (
-	. "github.com/cdelgado23/go-learning-projects/astar/pkg/map"
-)
+package astar
 
 const (
 	Normal = "\033[37m*\033[0m"

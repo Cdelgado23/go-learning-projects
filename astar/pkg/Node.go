@@ -1,4 +1,4 @@
-package _map
+package astar
 
 // Node represents a node in the graph
 type Node struct {

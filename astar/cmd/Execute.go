@@ -2,8 +2,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/cdelgado23/go-learning-projects/astar/pkg/pathfinding"
-	. "github.com/cdelgado23/go-learning-projects/astar/pkg/utils"
+	. "github.com/cdelgado23/go-learning-projects/astar/pkg"
 )
 
 // Generate a grid of nodes and executes the A* algorithm to find the shortest path between two nodes

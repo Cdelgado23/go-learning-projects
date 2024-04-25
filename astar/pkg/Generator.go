@@ -1,6 +1,4 @@
-package utils
-
-import . "github.com/cdelgado23/go-learning-projects/astar/pkg/map"
+package astar
 
 // Generate generates a map with a given width and height
 func Generate(height int, width int) [][]*Node {
