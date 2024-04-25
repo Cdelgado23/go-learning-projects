@@ -27,7 +27,7 @@ type PathRequest struct {
 	}
 }
 
-func PathsHandler() gin.HandlerFunc {
+func GetPathsHandler() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var request PathRequest
 

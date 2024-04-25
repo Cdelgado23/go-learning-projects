@@ -30,5 +30,5 @@ func (s *Server) Run() error {
 
 func (s Server) registerRoutes() {
 	s.engine.GET("/hello", hello.HelloHandler())
-	s.engine.GET("/paths", paths.PathsHandler())
+	s.engine.GET("/paths", paths.GetPathsHandler())
 }
