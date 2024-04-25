@@ -3,6 +3,7 @@ package server
 import (
 	"fmt"
 	"github.com/cdelgado23/go-learning-projects/webservice/internal/platform/server/handler/hello"
+	"github.com/cdelgado23/go-learning-projects/webservice/internal/platform/server/handler/paths"
 	"github.com/gin-gonic/gin"
 	"log"
 )
@@ -29,4 +30,5 @@ func (s *Server) Run() error {
 
 func (s Server) registerRoutes() {
 	s.engine.GET("/hello", hello.HelloHandler())
+	s.engine.GET("/paths", paths.PathsHandler())
 }
