@@ -17,14 +17,14 @@ func NewNodeRequest(x, y, z float64) NodeRequest {
 
 type PathRequest struct {
 	StartNode struct {
-		SX float64 `form:"sx" binding:"required"`
-		SY float64 `form:"sy" binding:"required"`
-		SZ float64 `form:"sz" binding:"required"`
+		SX float64 `form:"sx"`
+		SY float64 `form:"sy"`
+		SZ float64 `form:"sz"`
 	}
 	EndNode struct {
-		EX float64 `form:"ex" binding:"required"`
-		EY float64 `form:"ey" binding:"required"`
-		EZ float64 `form:"ez" binding:"required"`
+		EX float64 `form:"ex"`
+		EY float64 `form:"ey"`
+		EZ float64 `form:"ez"`
 	}
 }
 
