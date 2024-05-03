@@ -8,27 +8,27 @@ import (
 
 // InmemoryNodeRepository Implements node repository interface
 type InmemoryNodeRepository struct {
-	nodes map[string]astar.Node
+	nodes map[string]*astar.Node
 }
 
 //NewInmemoryNodeRepository creates a new in-memory node repository
 func NewInmemoryNodeRepository(width, height int) InmemoryNodeRepository {
 	nodes := astar.Generate(width, height)
-	nodeMap := make(map[string]astar.Node)
+	nodeMap := make(map[string]*astar.Node)
 	for _, row := range nodes {
 		for _, n := range row {
-			nodeMap[uuid.NewString()] = *n
+			nodeMap[uuid.NewString()] = n
 		}
 	}
 	return InmemoryNodeRepository{nodes: nodeMap}
 }
 
-func (repo InmemoryNodeRepository) GetNodeByLocation(x float64, y float64, z float64) (astar.Node, error) {
+func (repo InmemoryNodeRepository) GetNodeByLocation(l astar.Point3D) (*astar.Node, error) {
 	//Iterate over all nodes
 	for _, n := range repo.nodes {
-		if node.NodeContains(&n, astar.Point3D{X: x, Y: y, Z: z}) {
+		if node.NodeContains(n, l) {
 			return n, nil
 		}
 	}
-	return astar.Node{}, node.ErrNodeNotFound
+	return &astar.Node{}, node.ErrNodeNotFound
 }

@@ -3,6 +3,7 @@ package path
 import (
 	"fmt"
 	astar "github.com/cdelgado23/go-learning-projects/astar/pkg"
+	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node"
 )
 
 type Location struct {
@@ -18,21 +19,20 @@ func newLocation(node astar.Node) Location {
 }
 
 type PathFinderService struct {
-	nodes [][]*astar.Node
+	repository node.NodeRepository
 }
 
-func NewPathFinderService(height int, width int) PathFinderService {
-	nodes := astar.Generate(height, width)
-	return PathFinderService{nodes: nodes}
+func NewPathFinderService(repository node.NodeRepository) PathFinderService {
+	return PathFinderService{repository: repository}
 }
 
 func (p *PathFinderService) PathFromTo(start Location, end Location) []Location {
-	startNode, err := p.NodeFromLocation(start)
+	startNode, err := p.repository.GetNodeByLocation(locationTo3DPoint(start))
 	if err != nil {
 		fmt.Println("error", err)
 		return []Location{}
 	}
-	endNode, err := p.NodeFromLocation(end)
+	endNode, err := p.repository.GetNodeByLocation(locationTo3DPoint(end))
 	if err != nil {
 		fmt.Println("error", err)
 		return []Location{}
@@ -41,23 +41,13 @@ func (p *PathFinderService) PathFromTo(start Location, end Location) []Location 
 	path, _ := astar.AStar(startNode, endNode)
 
 	var locations []Location
-	for _, node := range path {
-		locations = append(locations, newLocation(*node))
+	for _, n := range path {
+		locations = append(locations, newLocation(*n))
 	}
 
 	return locations
 }
 
-// NodeFromLocation Node from Location, finding the closest node in the nodes array
-// There is a tolerance of +-0.02 for distance between the location and the node
-func (p *PathFinderService) NodeFromLocation(location Location) (*astar.Node, error) {
-	for _, row := range p.nodes {
-		for _, node := range row {
-			distance := node.Location.Distance(&astar.Point3D{X: location.X, Y: location.Y, Z: location.Z})
-			if distance <= 0.02 {
-				return node, nil
-			}
-		}
-	}
-	return nil, fmt.Errorf("node not found for location %v", location)
+func locationTo3DPoint(l Location) astar.Point3D {
+	return astar.Point3D{X: l.X, Y: l.Y, Z: l.Z}
 }

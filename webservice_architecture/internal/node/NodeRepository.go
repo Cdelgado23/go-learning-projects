@@ -11,7 +11,7 @@ func NodeContains(n *astar.Node, p astar.Point3D) bool {
 }
 
 type NodeRepository interface {
-	GetNodeByLocation(d astar.Point3D) (astar.Node, error)
+	GetNodeByLocation(d astar.Point3D) (*astar.Node, error)
 }
 
 var ErrNodeNotFound = errors.New("node not found")

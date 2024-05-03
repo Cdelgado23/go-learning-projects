@@ -6,7 +6,6 @@ require github.com/gin-gonic/gin v1.9.1
 
 require (
 	github.com/cdelgado23/go-learning-projects/astar v0.0.0-unpublished
-	github.com/cdelgado23/go-learning-projects/webservice v0.0.0-20240427183230-5d11f1653201
 	github.com/google/uuid v1.6.0
 )
 

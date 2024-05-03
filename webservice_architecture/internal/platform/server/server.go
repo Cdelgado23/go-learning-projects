@@ -14,11 +14,11 @@ type Server struct {
 	pathFinder path.PathFinderService
 }
 
-func New(host string, port uint) Server {
+func New(host string, port uint, pathFinder path.PathFinderService) Server {
 	srv := Server{
 		httpAddr:   fmt.Sprintf("%s:%d", host, port),
 		engine:     gin.New(),
-		pathFinder: path.NewPathFinderService(10, 50),
+		pathFinder: pathFinder,
 	}
 
 	srv.registerRoutes()

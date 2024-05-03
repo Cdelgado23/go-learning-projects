@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cdelgado23/go-learning-projects/webservice/cmd/api/bootstrap"
+	"github.com/cdelgado23/go-learning-projects/webservice-architecture/cmd/api/bootstrap"
 	"log"
 )
 
