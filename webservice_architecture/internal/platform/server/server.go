@@ -2,7 +2,7 @@ package server
 
 import (
 	"fmt"
-	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/path"
+	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node/service"
 	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/platform/server/handler"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -11,10 +11,10 @@ import (
 type Server struct {
 	httpAddr   string
 	engine     *gin.Engine
-	pathFinder path.PathFinderService
+	pathFinder node.PathFinderService
 }
 
-func New(host string, port uint, pathFinder path.PathFinderService) Server {
+func New(host string, port uint, pathFinder node.PathFinderService) Server {
 	srv := Server{
 		httpAddr:   fmt.Sprintf("%s:%d", host, port),
 		engine:     gin.New(),

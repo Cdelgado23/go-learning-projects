@@ -2,7 +2,7 @@ package inmemory
 
 import (
 	astar "github.com/cdelgado23/go-learning-projects/astar/pkg"
-	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node"
+	node "github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node/domain"
 	"github.com/google/uuid"
 )
 

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/path"
+	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -28,7 +28,7 @@ type PathRequest struct {
 	}
 }
 
-func GetPathsHandler(service path.PathFinderService) gin.HandlerFunc {
+func GetPathsHandler(service node.PathFinderService) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var request PathRequest
 
@@ -45,6 +45,6 @@ func GetPathsHandler(service path.PathFinderService) gin.HandlerFunc {
 	}
 }
 
-func NodeRequestToLocation(node NodeRequest) path.Location {
-	return path.NewLocation(node.X, node.Y, node.Z)
+func NodeRequestToLocation(n NodeRequest) node.Location {
+	return node.NewLocation(n.X, n.Y, n.Z)
 }
