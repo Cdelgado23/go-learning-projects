@@ -14,3 +14,6 @@ To achieve this, the project will adress the following points:
 - Implementing a nodes repository to handler the access to the nodes data.
 - Injecting the repository into the service.
 - Implementing a test to validate the endpoint behaviour.
+- Organizing the project structure to better separate the concerns, trying to follow the good practices of the Go
+  community.
+
