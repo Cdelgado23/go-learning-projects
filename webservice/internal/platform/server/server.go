@@ -26,7 +26,7 @@ func New(host string, port uint) Server {
 }
 
 func (s *Server) Run() error {
-	log.Print("Starting web service on ", s.httpAddr)
+	log.Print("Starting web application on ", s.httpAddr)
 	return s.engine.Run(s.httpAddr)
 }
 

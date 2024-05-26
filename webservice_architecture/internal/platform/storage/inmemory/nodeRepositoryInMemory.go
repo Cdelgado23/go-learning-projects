@@ -6,13 +6,13 @@ import (
 	"github.com/google/uuid"
 )
 
-// InmemoryNodeRepository Implements node repository interface
-type InmemoryNodeRepository struct {
+// NodeRepositoryInMemory Implements node repository interface
+type NodeRepositoryInMemory struct {
 	nodes map[string]*astar.Node
 }
 
-//NewInmemoryNodeRepository creates a new in-memory node repository
-func NewInmemoryNodeRepository(width, height int) InmemoryNodeRepository {
+//NewInMemoryNodeRepository creates a new in-memory node repository
+func NewInMemoryNodeRepository(width, height int) NodeRepositoryInMemory {
 	nodes := astar.Generate(width, height)
 	nodeMap := make(map[string]*astar.Node)
 	for _, row := range nodes {
@@ -20,10 +20,10 @@ func NewInmemoryNodeRepository(width, height int) InmemoryNodeRepository {
 			nodeMap[uuid.NewString()] = n
 		}
 	}
-	return InmemoryNodeRepository{nodes: nodeMap}
+	return NodeRepositoryInMemory{nodes: nodeMap}
 }
 
-func (repo InmemoryNodeRepository) GetNodeByLocation(l astar.Point3D) (*astar.Node, error) {
+func (repo NodeRepositoryInMemory) GetNodeByLocation(l astar.Point3D) (*astar.Node, error) {
 	//Iterate over all nodes
 	for _, n := range repo.nodes {
 		if node.NodeContains(n, l) {

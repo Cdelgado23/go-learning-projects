@@ -2,7 +2,7 @@ package server
 
 import (
 	"fmt"
-	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node/service"
+	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node/application"
 	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/platform/server/handler"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -26,7 +26,7 @@ func New(host string, port uint, pathFinder node.PathFinderService) Server {
 }
 
 func (s *Server) Run() error {
-	log.Print("Starting web service on ", s.httpAddr)
+	log.Print("Starting web application on ", s.httpAddr)
 	return s.engine.Run(s.httpAddr)
 }
 

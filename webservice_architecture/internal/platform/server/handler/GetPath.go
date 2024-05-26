@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node/service"
+	"github.com/cdelgado23/go-learning-projects/webservice-architecture/internal/node/application"
 	"github.com/gin-gonic/gin"
 )
 
