@@ -9,15 +9,17 @@ web service comes into play.
 This project is focused on improving the architecture of the web service to allow more complex scenarios and better
 handling of the data.
 
-To achieve this, the project will adress the following points:
+To achieve this, the project will address the following points:
 
-- Implementing a nodes repository to handler the access to the nodes data.
+- Implementing a nodes repository to handle the access to the nodes data.
 - Injecting the repository into the service.
-- Implementing a test to validate the endpoint behaviour.
+- Implementing tests to validate the endpoint behaviour.
 - Organizing the project structure to better separate the concerns, trying to follow the good practices of the Go
   community.
 
 ## Results
+
+### Dependency injection and project structure
 
 All the functionality of the previous project is maintained, but the code is now organized in a different way.
 
@@ -51,7 +53,33 @@ as possible, so I have tried to create a structure that is easy to understand an
 I think focusing on shareable and reusable packages in the internal directory can lead to the opposite effect, so I did
 not take it into account when organizing the project.
 
+I have considered the platform package as a place to put the infrastructure code (although I would normally place it in
+a infrastructure directory, next to domain and application), such as the web server and the storage implementations.
+This is a common practice in Go projects.
+
+### Testing
+
+I have implemented tests for the service and the repository. I have explored the functionality of the testing package
+implementing unit tests, table-driven tests, analyzing the coverage and writing a benchmark for the service.
+
+#### Coverage commands
+
+```shell
+go test ./... -coverpkg=./... -coverprofile=test_coverage
+go tool cover -html=test_coverage
+```
+
+![Html test coverage result](./test_coverage.png)
 
 ## Next steps
 
-- Sql implementation of the repository. 
+There are a number of topics I want to explore in the future:
+
+- Sql implementation of the repository.
+- Implementing a cache layer.
+- Implementing a logging layer.
+- Configuration management.
+- Deployment of the application.
+- Usage of mocks in the tests.
+- Events and messaging.
+
